@@ -29,7 +29,7 @@ def jaro(s1: str, s2: str):
                     t += 1
 
     t /= 2
-    
+
     sim_j: float = 0
     if m != 0:
         sim_j = ((m / s1_size) + (m / s2_size) + ((m - t) / m)) / 3
@@ -56,6 +56,3 @@ def jaro_winkler(s1: str, s2: str):
     sim_w = sim_j + ( l * p * (1 - sim_j))
 
     return sim_w
-
-
-# def jaro_winkler_distance(s1: str, s2: str):
