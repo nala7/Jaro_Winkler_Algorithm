@@ -6,6 +6,9 @@
 
 ## Resumen
 
+Aplicaciones:
+- nombres
+
 ## Descripción
 
 ## Referencias bibliográficas
