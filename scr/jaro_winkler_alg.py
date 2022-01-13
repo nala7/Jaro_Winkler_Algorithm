@@ -6,7 +6,7 @@ def matching_characters(char1: str, char2: str, char1_index: int, char2_index: i
     if chars_distance < 0:
         chars_distance *= -1
 
-    return char1 == char2 and chars_distance < max_matching_distance
+    return char1 == char2 and chars_distance <= max_matching_distance
 
 def jaro(s1: str, s2: str):
     s1_size: int = len(s1)
@@ -28,6 +28,8 @@ def jaro(s1: str, s2: str):
                 if i != j:
                     t += 1
 
+    t /= 2
+    
     sim_j: float = 0
     if m != 0:
         sim_j = ((m / s1_size) + (m / s2_size) + ((m - t) / m)) / 3
