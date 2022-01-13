@@ -6,14 +6,44 @@
 > Luis Alejandro Lara Rojas C412
 
 ## Resumen
-El proyecto presenta una automatización del algoritmo Jaro-Winkler distance. Para ello se ha tomado como referencia 
-la definición del algoritmo dada en: https://en.wikipedia.org/wiki/Jaro–Winkler_distance. La solución fue hecha en el 
-leguaje de programación Python.
+El proyecto presenta una automatización del algoritmo Jaro-Winkler distance. 
+Este algoritmo es usado para hallar una métrica que permite establecer una comparación de similitud entre dos cadenas de caracteres. 
+
+La solución fue hecha en el lenguaje de programación Python.
 
 ## Descripción
+### Definición de Similitud de Jaro:
+
+La similitud de Jaro $sim_j$ de dos cadenas $s_1$ y $s_2$ es:
+$$sim_j=\begin{cases} 0,&\text{si $m = 0$}\\\frac{1}{3}(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}),&\text{si $m \neq 0$}\end{cases}$$
+
+Donde:
+- $|s_i|$ es la longuitud de la cadea
+ $s_i$
+ - $m$ es el número de caracteres *coincidentes*
+ - $t$ es el número de transposiciones
+
+*Nota:* Dos caracteres de $s_1$ y $s_2$ respectivamente se consideran *coincidentes* solo si son iguales o 
+si no distan más de $\lfloor \frac{max(|s_1|, |s_2|)}{2} \rfloor - 1$ caracteres.
+
+### Definición de la Similitud de Jaro-Winkler:
+
+La similitud de Jaro-Winkler $sim_w$ es:
+
+$sim_w =  sim_j + lp(1 - sim_j)$
+
+Donde:
+- $sim_j$ es la similitud de Jaro de las cadenas $s_1$ y $s_2$
+- $l$ es la longuitud del prefijo común de las cadenas de a lo sumo 4 caracteres
+- $p$ es una constante que aumenta cuando las cadenas tienen prefijos comunes. El valor estandar es $p = 0.1$
+
+La **distancia de Jaro-Winkler** $d_w$ se define como:
+
+$d_w = 1- sim_w$
+
 ### Ejecutar código
 
-Para correr el código debe insertar en consola en la carpeta `scr`:
+Para correr el código debe insertar en consola dentro de la carpeta `scr`:
 ```
 python3 run.py 
 ```
